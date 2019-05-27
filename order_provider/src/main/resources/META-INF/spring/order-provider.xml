@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- provider's application name, used for tracing dependency relationship -->
+    <!-- provider的application的名称(必须唯一),用于计算依赖关系 -->
+    <dubbo:application name="orderprovider"/>
+
+
+    <!-- 监控中心 -->
+    <dubbo:monitor protocol="registry"/>
+
+    <!-- use multicast registry center to export service -->
+    <!-- 使用zookeeper注册中心,提供服务 -->
+    <dubbo:registry protocol="zookeeper" address="192.168.120.110:2181,192.168.120.150:2181,192.168.120.224:2181,192.168.120.137:2181" timeout="10000"/>
+
+    <!-- 采用默认的 dubbo 协议来发布-->
+    <!--<dubbo:registry address="N/A"/>-->
+
+    <!-- use dubbo protocol to export service on port 20880 -->
+    <!-- 当前的dubbo 协议提供当前服务的端口号 -->
+    <dubbo:protocol name="dubbo" port="20880"/>
+
+    <!-- declare the service interface to be exported -->
+    <!-- 服务接口 -->
+    <dubbo:service interface="com.inspur.dubbo.service.OrderService" ref="orderService"/>
+
+    <!-- service implementation, as same as regular local bean -->
+    <!-- 服务接口的实现 -->
+    <bean id="orderService" class="com.inspur.dubbo.service.impl.OrderServiceImpl"/>
+
+
+</beans>

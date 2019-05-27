@@ -28,6 +28,26 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- 导入order_api的东西 -->
+        <dependency>
+            <groupId>com.inspur.dubbo</groupId>
+            <artifactId>order_api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.8.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
