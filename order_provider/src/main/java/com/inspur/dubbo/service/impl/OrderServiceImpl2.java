@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 
 /**
  * User: YANG
- * Date: 2019/5/26-23:00
+ * Date: 2019/5/27-22:16
  * Description: No Description
  */
-@Service(value="orderService")
-public class OrderServiceImpl implements OrderService {
+@Service("orderService2")
+public class OrderServiceImpl2 implements OrderService {
     @Override
     public OrderResponse doOrder(OrderRequest orderRequest) {
-        System.out.println("请求OrderRequest is -------------->:" + orderRequest);
+        System.out.println("version 0.0.1 请求OrderRequest is -------------->:" + orderRequest);
         OrderResponse orderResponse = new OrderResponse();
         orderResponse.setData("");
         orderResponse.setMemo("处理成功");
