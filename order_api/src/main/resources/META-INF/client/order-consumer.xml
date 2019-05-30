@@ -7,9 +7,8 @@
     <!-- consumer's application name, used for tracing dependency relationship (not a matching criterion),
     don't set it same as provider -->
     <!-- 使用者的应用程序名称，用于跟踪依赖关系(不是匹配条件),不要将其设置为提供者  -->
-    <!--<dubbo:application name="orderconsumer"/>-->
-
-    <dubbo:reference id="orderService" interface="com.inspur.dubbo.service.OrderService" check="false" protocol="dubbo" version="0.0.1"/>
-    <dubbo:reference id="orderQueryService" interface="com.inspur.dubbo.service.OrderQueryService" check="false" protocol="dubbo"/>
+    <dubbo:application id="order_provider" name="order_provider"/>
+    <dubbo:reference id="orderService" interface="com.inspur.dubbo.service.OrderService" protocol="dubbo" version="2.0" application="order_provider"/>
+    <dubbo:reference id="orderQueryService" interface="com.inspur.dubbo.service.OrderQueryService" protocol="dubbo" application="order_provider"/>
 
 </beans>

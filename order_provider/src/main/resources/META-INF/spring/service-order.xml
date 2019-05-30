@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd" default-autowire="byName">
+
+
+    <dubbo:application id="order_provider" name="order_provider"/>
+
+    <!--服务发布的配置，需要暴露的服务接口-->
+    <dubbo:service interface="com.inspur.dubbo.service.OrderService" ref="orderService" protocol="dubbo"  version="1.0" application="order_provider"/>
+    <dubbo:service interface="com.inspur.dubbo.service.OrderService" ref="orderService2" protocol="dubbo" version="2.0" application="order_provider"/>
+    <!-- service implementation, as same as regular local bean -->
+    <!-- 服务接口的实现,可以通过 spring的注解来实现 -->
+    <!--<bean id="orderService" class="com.inspur.dubbo.service.impl.OrderServiceImpl"/>-->
+    <dubbo:service interface="com.inspur.dubbo.service.OrderQueryService" ref="orderQueryService" protocol="dubbo" application="order_provider"/>
+
+
+</beans>
